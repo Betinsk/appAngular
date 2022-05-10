@@ -13,14 +13,14 @@ export class PainelComponent implements OnInit {
 
   public frases: Frase[] = FRASES
   public instrucao: string ='Traduza a frase:'
-  public resposta: string = ''
+  public resposta!: string
 
   public progresso: number = 0
 
   public tentativas: number = 3
 
   public rodada: number = 0
-  public rodadaFrase!: Frase; 
+  public rodadaFrase!: Frase
 
   constructor() { 
     this.atualizaRodada()
@@ -31,7 +31,7 @@ export class PainelComponent implements OnInit {
   
   public atualizaResposta(resposta: Event): void {
     this.resposta = (<HTMLInputElement>resposta.target).value
-    //console.log(this.resposta)
+    //console.log(resposta)
   }
 
   public verificarResposta(): void {
@@ -55,14 +55,17 @@ export class PainelComponent implements OnInit {
 
 
     else {
+
+      alert('A tradução está errada!')
       //Diminuir a variável tentativas
       this.tentativas --
+      
 
       if(this.tentativas === -1) {
         alert('Game Over')
       }
     }
-    console.log(this.tentativas)
+  
   }
    
 public atualizaRodada(): void {
