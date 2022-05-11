@@ -31,7 +31,6 @@ export class PainelComponent implements OnInit {
 
   
   ngOnDestroy() {
-    console.log('Component painel foi destruido!')
   }
 
   public atualizaResposta(resposta: Event): void {
@@ -50,7 +49,7 @@ export class PainelComponent implements OnInit {
           this.progresso = this.progresso + (100 / this.frases.length)
 
           if(this.rodada === 4) {
-            this.encerrarJogo.emit('Vitoria')
+            this.encerrarJogo.emit('vitoria')
           }
 
           //atualiza o objeto rodadaFrase
@@ -65,7 +64,7 @@ export class PainelComponent implements OnInit {
       
 
       if(this.tentativas === -1) {
-        this.encerrarJogo.emit('Derrota')
+        this.encerrarJogo.emit('derrota')
 
       }
     }
