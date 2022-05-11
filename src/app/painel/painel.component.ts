@@ -10,17 +10,14 @@ import { FRASES } from './frases-mock';
 })
 export class PainelComponent implements OnInit {
 
-
   public frases: Frase[] = FRASES
-  public instrucao: string ='Traduza a frase:'
-  public resposta!: string
+  public instrucao: string = 'Traduza a frase'
+  public resposta: string = ''
+  public rodada: number = 0
+  public rodadaFrase!: Frase;
 
   public progresso: number = 0
-
   public tentativas: number = 3
-
-  public rodada: number = 0
-  public rodadaFrase!: Frase
 
   constructor() { 
     this.atualizaRodada()
@@ -45,11 +42,12 @@ export class PainelComponent implements OnInit {
           //progresso
           this.progresso = this.progresso + (100 / this.frases.length)
 
+          if(this.rodada === 4) {
+            alert('Vc concluiu as traducoes com sucesso!')
+          }
+
           //atualiza o objeto rodadaFrase
           this.atualizaRodada()
-
-          //Limpar a resposta do usuário
-          this.resposta = ''
 
           }
 
